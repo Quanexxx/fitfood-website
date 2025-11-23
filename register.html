@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your FitFood account to start your healthy eating journey">
+    <title>Register - FitFood</title>
+    <!-- Подключение Tailwind CSS через CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение библиотеки иконок Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <!-- Глобальный менеджер темы -->
+    <script src="../js/theme.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#F8F9FA', 
+                        accent: '#27AE60',
+                        textdark: '#2C3E50',
+                        textlight: '#7F8C8D',
+                    },
+                    fontFamily: {
+                        'merriweather': ['Merriweather', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-montserrat min-h-screen bg-primary">
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="../index.html" class="font-merriweather text-2xl font-bold text-accent flex items-center">
+                    🍎 FitFood
+                </a>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="font-medium hover:text-accent transition-colors">Главная</a>
+                    <a href="../index.html#catalog" class="font-medium hover:text-accent transition-colors">Каталог</a>
+                    <a href="../index.html#about" class="font-medium hover:text-accent transition-colors">О нас</a>
+                    <a href="../index.html#contacts" class="font-medium hover:text-accent transition-colors">Контакты</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="text-textdark hover:text-accent transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <a href="login.html" class="px-6 py-2 border-2 border-accent text-accent rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors">
+                        Войти
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow bg-gradient-to-br from-accent to-green-400 py-8">
+        <div class="container mx-auto px-4 flex items-center justify-center min-h-[80vh]">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+                <div class="text-center mb-8">
+                    <a href="../index.html" class="font-merriweather text-2xl font-bold text-accent block mb-4">
+                        🍎 FitFood
+                    </a>
+                    <h1 class="font-merriweather text-3xl font-bold text-textdark mb-2">
+                        Создать аккаунт
+                    </h1>
+                    <p class="text-textlight">
+                        Присоединяйтесь к FitFood сегодня
+                    </p>
+                </div>
+
+                <form id="registerForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-textdark mb-2">
+                            Имя и фамилия
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="Иван Иванов"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-textdark mb-2">
+                            Email адрес
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="ivan@example.com"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-textdark mb-2">
+                            Пароль
+                        </label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            required
+                            minlength="8"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="Не менее 8 символов"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="confirm-password" class="block text-sm font-medium text-textdark mb-2">
+                            Подтвердите пароль
+                        </label>
+                        <input 
+                            type="password" 
+                            id="confirm-password" 
+                            name="confirm-password"
+                            required
+                            minlength="8"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="Повторите пароль"
+                        >
+                    </div>
+
+                    <div class="flex items-start">
+                        <input 
+                            type="checkbox" 
+                            id="agree-terms"
+                            name="agree-terms"
+                            required
+                            class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent mt-1"
+                        >
+                        <label for="agree-terms" class="ml-3 text-sm text-textlight">
+                            Я согласен с 
+                            <a href="#" class="text-accent hover:underline">условиями использования</a>
+                            и 
+                            <a href="#" class="text-accent hover:underline">политикой конфиденциальности</a>
+                        </label>
+                    </div>
+
+                    <button 
+                        type="submit"
+                        class="w-full bg-accent text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform"
+                    >
+                        Создать аккаунт
+                    </button>
+                </form>
+
+                <div class="flex items-center my-6">
+                    <div class="flex-1 border-t border-gray-300"></div>
+                    <span class="px-4 text-textlight text-sm">или</span>
+                    <div class="flex-1 border-t border-gray-300"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                        Facebook
+                    </button>
+                    <button type="button" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fab fa-instagram text-pink-600 mr-2"></i>
+                        Instagram
+                    </button>
+                </div>
+
+                <div class="text-center mt-6">
+                    <p class="text-textlight">
+                        Уже есть аккаунт? 
+                        <a href="login.html" class="text-accent font-semibold hover:underline">
+                            Войти
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-telegram text-xl"></i>
+                </a>
+            </div>
+            <p class="text-textlight text-sm">
+                &copy; 2025 FitFood. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Пароль должен содержать не менее 8 символов');
+                return;
+            }
+
+            if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                alert('Пожалуйста, введите корректный email адрес');
+                return;
+            }
+
+            const userData = {
+                name: name,
+                email: email,
+                joinDate: new Date().toLocaleDateString('ru-RU')
+            };
+            
+            localStorage.setItem('userProfile', JSON.stringify(userData));
+
+            alert('Регистрация успешна! Добро пожаловать в FitFood!');
+            
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
