@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your shopping cart - FitFood healthy meals">
+    <title>Shopping Cart - FitFood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <script src="../js/theme.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#F8F9FA', 
+                        accent: '#27AE60',
+                        textdark: '#2C3E50',
+                        textlight: '#7F8C8D',
+                    },
+                    fontFamily: {
+                        'merriweather': ['Merriweather', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-montserrat min-h-screen bg-primary">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="../index.html" class="font-merriweather text-2xl font-bold text-accent flex items-center">
+                    🍎 FitFood
+                </a>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="font-medium hover:text-accent transition-colors">Главная</a>
+                    <a href="../index.html#catalog" class="font-medium hover:text-accent transition-colors">Каталог</a>
+                    <a href="../index.html#about" class="font-medium hover:text-accent transition-colors">О нас</a>
+                    <a href="../index.html#contacts" class="font-medium hover:text-accent transition-colors">Контакты</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="text-textdark hover:text-accent transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <a href="login.html" class="px-6 py-2 border-2 border-accent text-accent rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors">
+                        Войти
+                    </a>
+                    <a href="bucket.html" class="px-6 py-2 bg-accent text-white rounded-lg font-semibold hover:bg-green-600 transition-colors shadow-lg relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <h1 class="font-merriweather text-4xl font-bold text-textdark mb-8">Корзина покупок</h1>
+        
+        <!-- Cart Items -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <!-- Item 1 -->
+            <div class="flex items-center justify-between border-b pb-4 mb-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-20 h-20 bg-accent bg-opacity-20 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-apple-alt text-3xl text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-merriweather text-xl font-bold text-textdark">Сбалансированный рацион</h3>
+                        <p class="text-textlight text-sm">Завтрак, обед, ужин на день</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <button class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-gray-200">
+                            <i class="fas fa-minus text-sm"></i>
+                        </button>
+                        <span class="font-bold">1</span>
+                        <button class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-gray-200">
+                            <i class="fas fa-plus text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-merriweather text-xl font-bold text-textdark">1 500 ₽</p>
+                        <button class="text-red-500 hover:text-red-700 text-sm mt-1 delete-item">
+                            <i class="fas fa-trash mr-1"></i> Удалить
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="flex items-center justify-between border-b pb-4 mb-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-20 h-20 bg-accent bg-opacity-20 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-3xl text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-merriweather text-xl font-bold text-textdark">Фитнес программа</h3>
+                        <p class="text-textlight text-sm">Низкоуглеводное питание на неделю</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <button class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-gray-200">
+                            <i class="fas fa-minus text-sm"></i>
+                        </button>
+                        <span class="font-bold">1</span>
+                        <button class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-gray-200">
+                            <i class="fas fa-plus text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-merriweather text-xl font-bold text-textdark">9 800 ₽</p>
+                        <button class="text-red-500 hover:text-red-700 text-sm mt-1 delete-item">
+                            <i class="fas fa-trash mr-1"></i> Удалить
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="pt-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-textlight">Сумма заказа</span>
+                    <span class="font-bold">11 300 ₽</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-textlight">Доставка</span>
+                    <span class="font-bold">Бесплатно</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold border-t pt-4">
+                    <span>Итого</span>
+                    <span class="text-accent">11 300 ₽</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Info -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="font-merriweather text-2xl font-bold text-textdark mb-4">Данные для доставки</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-textdark mb-2">Адрес доставки</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" placeholder="Введите адрес" id="deliveryAddress">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-textdark mb-2">Время доставки</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" id="deliveryTime">
+                        <option>10:00 - 12:00</option>
+                        <option>12:00 - 14:00</option>
+                        <option>14:00 - 16:00</option>
+                        <option>16:00 - 18:00</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="font-merriweather text-2xl font-bold text-textdark mb-4">Способ оплаты</h2>
+            <div class="space-y-3">
+                <label class="flex items-center space-x-3 cursor-pointer">
+                    <input type="radio" name="payment" value="online" checked class="text-accent">
+                    <span>Картой онлайн</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                    <input type="radio" name="payment" value="cash" class="text-accent">
+                    <span>Наличными при получении</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                    <input type="radio" name="payment" value="card_on_delivery" class="text-accent">
+                    <span>Картой при получении</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="text-center">
+            <button id="checkoutBtn" class="px-8 py-4 bg-accent text-white rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform w-full md:w-auto">
+                Оформить заказ
+            </button>
+            <p class="text-textlight text-sm mt-4">Нажимая кнопку, вы соглашаетесь с условиями доставки и возврата</p>
+        </div>
+
+        <!-- Empty Cart Message (hidden) -->
+        <div id="emptyCart" class="hidden bg-white rounded-xl shadow-lg p-8 text-center">
+            <div class="w-32 h-32 mx-auto bg-accent bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-shopping-cart text-6xl text-accent"></i>
+            </div>
+            <h3 class="font-merriweather text-2xl font-bold text-textdark mb-4">Ваша корзина пуста</h3>
+            <p class="text-textlight mb-6">Добавьте полезные рационы для здорового питания</p>
+            <a href="../index.html#catalog" class="inline-block px-6 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                Перейти к каталогу
+            </a>
+        </div>
+    </main>
+
+    <!-- Order Success Notification -->
+    <div id="orderNotification" class="hidden fixed top-4 right-4 bg-white rounded-lg shadow-xl p-4 flex items-center space-x-3 z-50">
+        <i class="fas fa-check-circle text-accent text-xl"></i>
+        <p class="font-medium text-textdark">Заказ оформлен! Спасибо за покупку.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-telegram text-xl"></i>
+                </a>
+            </div>
+            <p class="text-textlight text-sm">
+                &copy; 2025 FitFood. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript для корзины -->
+    <script>
+        // Текущая корзина
+        let cartItems = [
+            { id: 1, name: "Сбалансированный рацион", price: 1500, quantity: 1, icon: "fa-apple-alt" },
+            { id: 2, name: "Фитнес программа", price: 9800, quantity: 1, icon: "fa-dumbbell" }
+        ];
+
+        // Инициализация корзины
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
+        });
+
+        // Обработчик оформления заказа
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            const address = document.getElementById('deliveryAddress').value;
+            const time = document.getElementById('deliveryTime').value;
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            
+            if (!address) {
+                alert('Пожалуйста, введите адрес доставки');
+                return;
+            }
+
+            const notification = document.getElementById('orderNotification');
+            notification.classList.remove('hidden');
+
+            // Сохраняем заказ в историю
+            saveOrderToHistory(address, time, payment);
+
+            // Очищаем корзину
+            setTimeout(() => {
+                cartItems = [];
+                updateCartDisplay();
+                
+                // Показываем сообщение о пустой корзине
+                document.getElementById('emptyCart').classList.remove('hidden');
+                
+                // Скрываем уведомление
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                }, 3000);
+            }, 1500);
+        });
+
+        // Функция обновления отображения корзины
+        function updateCartDisplay() {
+            // Обновляем счетчик
+            document.getElementById('cartCount').textContent = cartItems.length;
+            
+            // Обновляем общую сумму
+            let total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.querySelectorAll('.font-bold.text-accent').forEach(el => {
+                if (el.textContent.includes('₽')) {
+                    el.textContent = total + ' ₽';
+                }
+            });
+            
+            // Показываем/скрываем сообщение о пустой корзине
+            if (cartItems.length === 0) {
+                document.getElementById('emptyCart').classList.remove('hidden');
+            } else {
+                document.getElementById('emptyCart').classList.add('hidden');
+            }
+        }
+
+        // Обработчики для кнопок +/-
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.fa-plus')) {
+                const button = e.target.closest('.fa-plus');
+                const quantitySpan = button.parentElement.querySelector('span');
+                const itemIndex = Array.from(button.closest('.border-b').parentElement.children).indexOf(button.closest('.border-b'));
+                
+                if (itemIndex >= 0 && cartItems[itemIndex]) {
+                    cartItems[itemIndex].quantity++;
+                    quantitySpan.textContent = cartItems[itemIndex].quantity;
+                    updateCartDisplay();
+                }
+            }
+            
+            if (e.target.closest('.fa-minus')) {
+                const button = e.target.closest('.fa-minus');
+                const quantitySpan = button.parentElement.querySelector('span');
+                const itemIndex = Array.from(button.closest('.border-b').parentElement.children).indexOf(button.closest('.border-b'));
+                
+                if (itemIndex >= 0 && cartItems[itemIndex] && cartItems[itemIndex].quantity > 1) {
+                    cartItems[itemIndex].quantity--;
+                    quantitySpan.textContent = cartItems[itemIndex].quantity;
+                    updateCartDisplay();
+                }
+            }
+            
+            if (e.target.closest('.delete-item')) {
+                const button = e.target.closest('.delete-item');
+                const itemIndex = Array.from(button.closest('.border-b').parentElement.children).indexOf(button.closest('.border-b'));
+                
+                if (itemIndex >= 0 && cartItems[itemIndex]) {
+                    cartItems.splice(itemIndex, 1);
+                    button.closest('.border-b').remove();
+                    updateCartDisplay();
+                }
+            }
+        });
+
+        // Сохранение заказа в историю
+        function saveOrderToHistory(address, time, payment) {
+            const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            const newOrder = {
+                id: orders.length + 1,
+                date: new Date().toLocaleDateString('ru-RU'),
+                items: cartItems,
+                address: address,
+                time: time,
+                payment: payment,
+                total: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                status: 'В обработке'
+            };
+            
+            orders.push(newOrder);
+            localStorage.setItem('userOrders', JSON.stringify(orders));
+        }
+    </script>
+</body>
+</html>
