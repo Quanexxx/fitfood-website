@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - FitFood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <script src="../js/theme.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#F8F9FA', 
+                        accent: '#27AE60',
+                        textdark: '#2C3E50',
+                        textlight: '#7F8C8D',
+                    },
+                    fontFamily: {
+                        'merriweather': ['Merriweather', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-montserrat min-h-screen bg-primary">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="../index.html" class="font-merriweather text-2xl font-bold text-accent flex items-center">
+                    🍎 FitFood
+                </a>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="font-medium hover:text-accent transition-colors">Главная</a>
+                    <a href="../index.html#catalog" class="font-medium hover:text-accent transition-colors">Каталог</a>
+                    <a href="../index.html#about" class="font-medium hover:text-accent transition-colors">О нас</a>
+                    <a href="../index.html#contacts" class="font-medium hover:text-accent transition-colors">Контакты</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="text-textdark hover:text-accent transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <a href="profile.html" class="px-6 py-2 border-2 border-accent text-accent rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors">
+                        Профиль
+                    </a>
+                    <button id="logoutBtn" class="px-6 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                        Выйти
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Profile Card -->
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                <!-- Profile Header -->
+                <div class="text-center mb-8">
+                    <div class="w-32 h-32 mx-auto bg-accent bg-opacity-20 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                        <i class="fas fa-user text-6xl text-accent"></i>
+                    </div>
+                    <h1 class="font-merriweather text-4xl font-bold text-textdark mb-2" id="profileNameDisplay">Гость</h1>
+                    <p class="text-textlight" id="profileEmailDisplay">Email не указан</p>
+                </div>
+
+                <!-- Profile Form -->
+                <form id="profileForm" class="space-y-6">
+                    <!-- Name Field -->
+                    <div>
+                        <label class="block text-sm font-medium text-textdark mb-2" for="profileName">Имя и фамилия</label>
+                        <input type="text" id="profileName" placeholder="Введите ваше имя" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label class="block text-sm font-medium text-textdark mb-2" for="profileEmail">Email</label>
+                        <input type="email" id="profileEmail" placeholder="Введите ваш email" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+
+                    <!-- Phone Field -->
+                    <div>
+                        <label class="block text-sm font-medium text-textdark mb-2" for="profilePhone">Телефон</label>
+                        <input type="tel" id="profilePhone" placeholder="+7 (999) 999-99-99" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+
+                    <!-- Dietary Preferences -->
+                    <div>
+                        <label class="block text-sm font-medium text-textdark mb-2" for="profileDiet">Диетические предпочтения</label>
+                        <textarea id="profileDiet" placeholder="Аллергии, вегетарианство, спортивные цели и т.д." 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all h-32"></textarea>
+                    </div>
+
+                    <!-- Delivery Address -->
+                    <div>
+                        <label class="block text-sm font-medium text-textdark mb-2" for="profileAddress">Адрес доставки</label>
+                        <textarea id="profileAddress" placeholder="Укажите ваш адрес для доставки" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all h-24"></textarea>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-4 pt-4">
+                        <!-- Save Profile Button -->
+                        <button type="button" id="saveProfileBtn" 
+                            class="flex-1 bg-accent text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform">
+                            Сохранить профиль
+                        </button>
+                        <!-- Delete Profile Button -->
+                        <button type="button" id="deleteProfileBtn" 
+                            class="flex-1 bg-red-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                            Удалить аккаунт
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Order History -->
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h3 class="font-merriweather text-2xl font-bold text-textdark mb-4">История заказов</h3>
+                    <div class="space-y-4" id="orderHistory">
+                        <!-- Order items will be dynamically added here -->
+                        <div class="text-center py-8 text-textlight">
+                            <i class="fas fa-shopping-bag text-4xl mb-4 opacity-50"></i>
+                            <p>У вас еще нет заказов</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membership Info -->
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-textlight">Дата регистрации:</p>
+                            <p class="font-semibold" id="memberSince">Сегодня</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-textlight">Статус:</p>
+                            <p class="font-semibold text-accent">Стандартный</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="hidden fixed top-4 right-4 bg-white rounded-lg shadow-xl p-4 flex items-center space-x-3 z-50">
+        <i class="fas fa-check-circle text-accent text-xl"></i>
+        <p class="font-medium text-textdark">Профиль успешно сохранен!</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-telegram text-xl"></i>
+                </a>
+            </div>
+            <p class="text-textlight text-sm">
+                &copy; 2025 FitFood. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript для профиля -->
+    <script>
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProfileData();
+            loadOrderHistory();
+        });
+
+        // Загрузка данных профиля
+        function loadProfileData() {
+            const userProfile = JSON.parse(localStorage.getItem('userProfile')) || {
+                name: 'Гость',
+                email: '',
+                phone: '',
+                diet: '',
+                address: '',
+                joinDate: new Date().toLocaleDateString('ru-RU')
+            };
+
+            // Заполняем форму
+            document.getElementById('profileName').value = userProfile.name || '';
+            document.getElementById('profileEmail').value = userProfile.email || '';
+            document.getElementById('profilePhone').value = userProfile.phone || '';
+            document.getElementById('profileDiet').value = userProfile.diet || '';
+            document.getElementById('profileAddress').value = userProfile.address || '';
+
+            // Отображаем данные
+            document.getElementById('profileNameDisplay').textContent = userProfile.name || 'Гость';
+            document.getElementById('profileEmailDisplay').textContent = userProfile.email || 'Email не указан';
+            document.getElementById('memberSince').textContent = userProfile.joinDate || 'Сегодня';
+        }
+
+        // Загрузка истории заказов
+        function loadOrderHistory() {
+            const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            const orderHistory = document.getElementById('orderHistory');
+            
+            if (orders.length > 0) {
+                orderHistory.innerHTML = '';
+                orders.forEach(order => {
+                    const orderElement = document.createElement('div');
+                    orderElement.className = 'bg-secondary rounded-lg p-4';
+                    orderElement.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-textdark">Заказ #${order.id}</h4>
+                                <p class="text-sm text-textlight">${order.date}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-textdark">${order.total} ₽</p>
+                                <p class="text-sm text-accent">${order.status}</p>
+                            </div>
+                        </div>
+                    `;
+                    orderHistory.appendChild(orderElement);
+                });
+            }
+        }
+
+        // Сохранение профиля
+        document.getElementById('saveProfileBtn').addEventListener('click', () => {
+            const name = document.getElementById('profileName').value || 'Гость';
+            const email = document.getElementById('profileEmail').value;
+            const phone = document.getElementById('profilePhone').value;
+            const diet = document.getElementById('profileDiet').value;
+            const address = document.getElementById('profileAddress').value;
+
+            // Валидация email
+            if (email && !isValidEmail(email)) {
+                alert('Пожалуйста, введите корректный email адрес');
+                return;
+            }
+
+            // Сохраняем профиль
+            const profile = {
+                name: name,
+                email: email,
+                phone: phone,
+                diet: diet,
+                address: address,
+                joinDate: localStorage.getItem('userProfile') ? 
+                    JSON.parse(localStorage.getItem('userProfile')).joinDate : 
+                    new Date().toLocaleDateString('ru-RU')
+            };
+
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+
+            // Обновляем отображение
+            document.getElementById('profileNameDisplay').textContent = name;
+            document.getElementById('profileEmailDisplay').textContent = email || 'Email не указан';
+
+            // Показываем уведомление
+            const notification = document.getElementById('successNotification');
+            notification.classList.remove('hidden');
+            setTimeout(() => notification.classList.add('hidden'), 3000);
+        });
+
+        // Выход из аккаунта
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            if (confirm('Вы уверены, что хотите выйти?')) {
+                localStorage.removeItem('userProfile');
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Удаление аккаунта
+        document.getElementById('deleteProfileBtn').addEventListener('click', () => {
+            if (confirm('Вы уверены, что хотите удалить аккаунт? Это действие нельзя отменить.')) {
+                localStorage.removeItem('userProfile');
+                localStorage.removeItem('userOrders');
+                alert('Аккаунт удален');
+                window.location.href = '../index.html';
+            }
+        });
+
+        // Валидация email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Предотвращаем отправку формы
+        document.getElementById('profileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
