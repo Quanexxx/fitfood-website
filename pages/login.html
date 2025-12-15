@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to your FitFood account">
+    <title>Вход - FitFood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <script src="../js/theme.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        secondary: '#F8F9FA', 
+                        accent: '#27AE60',
+                        textdark: '#2C3E50',
+                        textlight: '#7F8C8D',
+                    },
+                    fontFamily: {
+                        'merriweather': ['Merriweather', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-montserrat min-h-screen bg-primary">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="../index.html" class="font-merriweather text-2xl font-bold text-accent flex items-center">
+                    🍎 FitFood
+                </a>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="font-medium hover:text-accent transition-colors">Главная</a>
+                    <a href="../index.html#catalog" class="font-medium hover:text-accent transition-colors">Каталог</a>
+                    <a href="../index.html#about" class="font-medium hover:text-accent transition-colors">О нас</a>
+                    <a href="../index.html#contacts" class="font-medium hover:text-accent transition-colors">Контакты</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="text-textdark hover:text-accent transition-colors" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <a href="register.html" class="px-6 py-2 border-2 border-accent text-accent rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors">
+                        Регистрация
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-gradient-to-br from-accent to-green-400 py-8">
+        <div class="container mx-auto px-4 flex items-center justify-center min-h-[80vh]">
+            <!-- Login Container -->
+            <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <a href="../index.html" class="font-merriweather text-2xl font-bold text-accent block mb-4">
+                        🍎 FitFood
+                    </a>
+                    <h1 class="font-merriweather text-3xl font-bold text-textdark mb-2">
+                        Вход в аккаунт
+                    </h1>
+                    <p class="text-textlight">
+                        Войдите для управления заказами
+                    </p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-6">
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-textdark mb-2">
+                            Email адрес
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="ваш@email.com"
+                        >
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-textdark mb-2">
+                            Пароль
+                        </label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            required
+                            minlength="6"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="••••••••"
+                        >
+                        <div class="flex justify-end mt-2">
+                            <a href="#" class="text-sm text-accent hover:underline">
+                                Забыли пароль?
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div class="flex items-center">
+                        <input 
+                            type="checkbox" 
+                            id="remember"
+                            name="remember"
+                            class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent"
+                        >
+                        <label for="remember" class="ml-3 text-sm text-textlight">
+                            Запомнить меня
+                        </label>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button 
+                        type="submit"
+                        class="w-full bg-accent text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform"
+                    >
+                        Войти
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="flex items-center my-6">
+                    <div class="flex-1 border-t border-gray-300"></div>
+                    <span class="px-4 text-textlight text-sm">или</span>
+                    <div class="flex-1 border-t border-gray-300"></div>
+                </div>
+
+                <!-- Social Login -->
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fab fa-google text-red-600 mr-2"></i>
+                        Google
+                    </button>
+                    <button type="button" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <i class="fab fa-apple text-gray-800 mr-2"></i>
+                        Apple
+                    </button>
+                </div>
+
+                <!-- Register Link -->
+                <div class="text-center mt-6">
+                    <p class="text-textlight">
+                        Нет аккаунта? 
+                        <a href="register.html" class="text-accent font-semibold hover:underline">
+                            Зарегистрироваться
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="hidden fixed top-4 right-4 bg-white rounded-lg shadow-xl p-4 flex items-center space-x-3 z-50">
+        <i class="fas fa-check-circle text-accent text-xl"></i>
+        <p class="font-medium text-textdark">Успешный вход!</p>
+    </div>
+
+    <!-- Error Notification -->
+    <div id="errorNotification" class="hidden fixed top-4 right-4 bg-red-50 border border-red-200 rounded-lg shadow-xl p-4 flex items-center space-x-3 z-50">
+        <i class="fas fa-exclamation-circle text-red-600 text-xl"></i>
+        <p class="font-medium text-red-800" id="errorMessage"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="text-textlight hover:text-accent transition-colors">
+                    <i class="fab fa-telegram text-xl"></i>
+                </a>
+            </div>
+            <p class="text-textlight text-sm">
+                &copy; 2025 FitFood. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript для входа -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Валидация email
+            if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                showError('Пожалуйста, введите корректный email адрес');
+                return;
+            }
+            
+            // Валидация пароля
+            if (password.length < 6) {
+                showError('Пароль должен содержать не менее 6 символов');
+                return;
+            }
+
+            // Проверка существующего профиля (имитация)
+            const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
+            
+            if (savedProfile && savedProfile.email === email) {
+                // Успешный вход
+                const notification = document.getElementById('successNotification');
+                notification.classList.remove('hidden');
+                
+                // Обновляем статус входа
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(savedProfile));
+                
+                // Перенаправляем на главную
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 1500);
+            } else {
+                // Пользователь не найден
+                const confirmRegister = confirm('Аккаунт не найден. Хотите зарегистрироваться?');
+                if (confirmRegister) {
+                    window.location.href = 'register.html';
+                }
+            }
+        });
+
+        // Функция показа ошибки
+        function showError(message) {
+            const errorNotification = document.getElementById('errorNotification');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            errorMessage.textContent = message;
+            errorNotification.classList.remove('hidden');
+            
+            setTimeout(() => {
+                errorNotification.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Проверка если уже вошли
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                if (currentUser && currentUser.email) {
+                    document.getElementById('email').value = currentUser.email;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
